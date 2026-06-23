@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">WiFi Battle</string>
+    <string name="home_title">WiFi 联机大厅</string>
+    <string name="action_create_room">创建房间</string>
+    <string name="action_search_room">搜索房间</string>
+    <string name="action_settings">设置</string>
+    <string name="action_join_by_ip">通过 IP 加入</string>
+    <string name="lobby_title">房间大厅</string>
+    <string name="room_title">房间</string>
+    <string name="game_title">游戏中</string>
+    <string name="settings_title">设置</string>
+    <string name="action_ready">准备</string>
+    <string name="action_cancel_ready">取消准备</string>
+    <string name="action_start_game">开始游戏</string>
+    <string name="action_leave_room">离开房间</string>
+    <string name="action_send">发送</string>
+    <string name="hint_nickname">请输入昵称</string>
+    <string name="hint_room_name">房间名称</string>
+    <string name="hint_ip">服务器 IP</string>
+    <string name="hint_message">输入消息…</string>
+    <string name="label_max_players">最大人数</string>
+    <string name="label_current_players">当前人数</string>
+    <string name="label_host">房主</string>
+    <string name="label_ping">延迟</string>
+    <string name="label_ms">ms</string>
+    <string name="msg_searching">正在搜索房间…</string>
+    <string name="msg_no_room">暂无可用房间</string>
+    <string name="msg_connecting">正在连接…</string>
+    <string name="msg_connected">已连接</string>
+    <string name="msg_disconnected">已断开</string>
+    <string name="msg_waiting_host">等待房主开始…</string>
+    <string name="msg_need_wifi">请连接到同一 WiFi 网络</string>
+</resources>

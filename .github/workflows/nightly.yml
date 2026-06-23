@@ -1,0 +1,61 @@
+name: Nightly Build
+
+# 每日定时构建 - 用于尽早发现依赖变更、Gradle 升级带来的问题
+# UTC 时间每日 02:00 (北京时间 10:00) 触发
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+env:
+  GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
+  ANDROID_HOME: /opt/android-sdk
+
+jobs:
+  nightly:
+    name: 夜间构建
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: 赋予 gradlew 执行权限
+        run: chmod +x gradlew
+
+      - name: 升级到最新依赖
+        run: ./gradlew dependencyUpdates || true
+
+      - name: 构建 Debug APK
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: 上传 Debug 制品
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: 失败通知
+        if: failure()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          text: |
+            :x: 夜间构建失败
+            仓库: ${{ github.repository }}
+            分支: ${{ github.ref }}
+            提交: ${{ github.sha }}
+            请查看：${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        continue-on-error: true

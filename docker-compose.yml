@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  android-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wifibattle/android-builder:latest
+    container_name: wifibattle-builder
+    environment:
+      - GRADLE_USER_HOME=/root/.gradle
+      - ANDROID_HOME=/opt/android-sdk
+      - WFB_KEYSTORE_FILE=${WFB_KEYSTORE_FILE:-}
+      - WFB_KEYSTORE_PASSWORD=${WFB_KEYSTORE_PASSWORD:-}
+      - WFB_KEY_ALIAS=${WFB_KEY_ALIAS:-}
+      - WFB_KEY_PASSWORD=${WFB_KEY_PASSWORD:-}
+    volumes:
+      - gradle-cache:/root/.gradle
+      - ./app/build:/workspace/app/build
+      - ./dist:/dist
+    working_dir: /workspace
+    command: ["release"]
+
+volumes:
+  gradle-cache:

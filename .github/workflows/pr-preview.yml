@@ -1,0 +1,66 @@
+name: PR Preview Build
+
+# PR 预览构建 - 每次 PR 自动构建 Debug APK 供测试人员下载
+# 产物在 PR 页面 Comments 中提供下载链接
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+    types: [opened, synchronize, reopened]
+
+env:
+  GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
+  ANDROID_HOME: /opt/android-sdk
+
+jobs:
+  pr-build:
+    name: 构建 PR 预览包
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      pull-requests: write
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: 赋予 gradlew 执行权限
+        run: chmod +x gradlew
+
+      - name: 构建 Debug APK
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: 重命名 APK
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk app-debug-pr-${{ github.event.pull_request.number }}.apk
+
+      - name: 上传制品
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-${{ github.event.pull_request.number }}-apk
+          path: app-debug-pr-${{ github.event.pull_request.number }}.apk
+          retention-days: 14
+
+      - name: 在 PR 评论中发布链接
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-apk
+          message: |
+            ## 📦 PR #\${{ github.event.pull_request.number }} APK 预览
+
+            | 字段 | 值 |
+            |------|-----|
+            | 分支 | `${{ github.head_ref }}` |
+            | 提交 | `${{ github.event.pull_request.head.sha }}` |
+            | 构建 | #${{ github.run_id }} |
+            | 类型 | Debug |
+
+            **下载 APK**：[app-debug-pr-${{ github.event.pull_request.number }}.apk](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+            ⚠️ 此为未签名调试包，仅用于测试功能。
