@@ -155,7 +155,7 @@ jobs:
           else
             echo "==> 未配置签名，生成未签名 APK"
           fi
-          ./gradlew assemble${BUILD_TYPE^} $GRADLE_OPTS --no-daemon --stacktrace
+          ./gradlew assemble${BUILD_TYPE^} $GRADLE_OPTS --stacktrace
 
       - name: 收集产物
         run: |
