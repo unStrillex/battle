@@ -51,7 +51,6 @@ jobs:
       - name: 设置 Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 8.6
           cache-disabled: true
 
       - name: 赋予 gradlew 执行权限
@@ -91,7 +90,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: 运行单元测试
-        run: ./gradlew testDebugUnitTest
+        run: gradle testDebugUnitTest --no-daemon
 
       - name: 上传测试报告
         if: always()
@@ -117,7 +116,6 @@ jobs:
       - name: 设置 Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 8.6
           cache-disabled: true
 
       - name: 赋予 gradlew 执行权限
@@ -135,8 +133,8 @@ jobs:
       - name: 读取版本号
         id: version
         run: |
-          VERSION_NAME=$(./gradlew -q :app:properties | grep "^versionName:" | awk '{print $2}' | tr -d '\r')
-          VERSION_CODE=$(./gradlew -q :app:properties | grep "^versionCode:" | awk '{print $2}' | tr -d '\r')
+          VERSION_NAME=$(gradle -q :app:properties | grep "^versionName:" | awk '{print $2}' | tr -d '\r')
+          VERSION_CODE=$(gradle -q :app:properties | grep "^versionCode:" | awk '{print $2}' | tr -d '\r')
           echo "version_name=$VERSION_NAME" >> $GITHUB_OUTPUT
           echo "version_code=$VERSION_CODE" >> $GITHUB_OUTPUT
           echo "短 SHA: ${GITHUB_SHA::7}"
