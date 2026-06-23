@@ -1,10 +1,11 @@
-﻿name: Android Build
+name: Android Build
 
-# 涓绘瀯寤哄伐浣滄祦
-# 瑙﹀彂鏉′欢锛?#   - push 鍒?main / develop 鍒嗘敮
-#   - 鍒涘缓 v* tag 鈫?鑷姩鍙戝竷 Release
+# 主构建工作流
+# 触发条件:
+#   - push 到 main / develop 分支
+#   - 创建 v* tag → 自动发布 Release
 #   - Pull Request
-#   - 鎵嬪姩瑙﹀彂
+#   - 手动触发
 
 on:
   push:
@@ -15,7 +16,7 @@ on:
   workflow_dispatch:
     inputs:
       build_type:
-        description: '鏋勫缓绫诲瀷'
+        description: '构建类型'
         required: true
         default: 'release'
         type: choice
@@ -23,7 +24,7 @@ on:
           - release
           - debug
       upload_to_cdn:
-        description: '涓婁紶鍒?CDN'
+        description: '上传到 CDN'
         required: false
         default: 'false'
         type: boolean
@@ -37,28 +38,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # ========== 1. Lint 妫€鏌?==========
+  # ========== 1. Lint 检查 ==========
   lint:
-    name: 浠ｇ爜妫€鏌?(Lint)
+    name: 代码检查 (Lint)
     runs-on: ubuntu-22.04
     continue-on-error: true
     timeout-minutes: 20
     steps:
-      - name: 妫€鍑轰唬鐮?        uses: actions/checkout@v4
+      - name: 检出代码
+        uses: actions/checkout@v4
 
-      - name: 璁剧疆 JDK 17
+      - name: 设置 JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
-      - name: 璧嬩簣 gradlew 鎵ц鏉冮檺
+      - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
 
-      - name: 鎵ц Lint
+      - name: 执行 Lint
         run: ./gradlew lintDebug --stacktrace
 
-      - name: 涓婁紶 Lint 鎶ュ憡
+      - name: 上传 Lint 报告
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -69,28 +71,29 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
-  # ========== 2. 鍗曞厓娴嬭瘯 ==========
+  # ========== 2. 单元测试 ==========
   test:
-    name: 鍗曞厓娴嬭瘯
+    name: 单元测试
     runs-on: ubuntu-22.04
     continue-on-error: true
     timeout-minutes: 30
     steps:
-      - name: 妫€鍑轰唬鐮?        uses: actions/checkout@v4
+      - name: 检出代码
+        uses: actions/checkout@v4
 
-      - name: 璁剧疆 JDK 17
+      - name: 设置 JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
-      - name: 璧嬩簣 gradlew 鎵ц鏉冮檺
+      - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
 
-      - name: 杩愯鍗曞厓娴嬭瘯
+      - name: 运行单元测试
         run: ./gradlew testDebugUnitTest
 
-      - name: 涓婁紶娴嬭瘯鎶ュ憡
+      - name: 上传测试报告
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -99,27 +102,28 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
-  # ========== 3. 鏋勫缓 APK ==========
+  # ========== 3. 构建 APK ==========
   build:
-    name: 鏋勫缓 ${{ github.event.inputs.build_type || 'release' }} APK
+    name: 构建 ${{ github.event.inputs.build_type || 'release' }} APK
     runs-on: ubuntu-22.04
     timeout-minutes: 60
     permissions:
-      contents: write  # 鐢ㄤ簬鍒涘缓 Release
+      contents: write  # 用于创建 Release
 
     steps:
-      - name: 妫€鍑轰唬鐮?        uses: actions/checkout@v4
+      - name: 检出代码
+        uses: actions/checkout@v4
 
-      - name: 璁剧疆 JDK 17
+      - name: 设置 JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
-      - name: 璧嬩簣 gradlew 鎵ц鏉冮檺
+      - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
 
-      - name: 瑙ｇ爜绛惧悕 Keystore
+      - name: 解码签名 Keystore
         if: env.ANDROID_KEYSTORE_BASE64 != ''
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
@@ -128,43 +132,44 @@ jobs:
           echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > app/keystore/release.keystore
           ls -la app/keystore/
 
-      - name: 璇诲彇鐗堟湰鍙?        id: version
+      - name: 读取版本号
+        id: version
         run: |
           VERSION_NAME=$(./gradlew -q :app:properties | grep "^versionName:" | awk '{print $2}' | tr -d '\r')
           VERSION_CODE=$(./gradlew -q :app:properties | grep "^versionCode:" | awk '{print $2}' | tr -d '\r')
           echo "version_name=$VERSION_NAME" >> $GITHUB_OUTPUT
           echo "version_code=$VERSION_CODE" >> $GITHUB_OUTPUT
-          echo "鐭?SHA: ${GITHUB_SHA::7}"
+          echo "短 SHA: ${GITHUB_SHA::7}"
           echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
-      - name: 鏋勫缓 APK
+      - name: 构建 APK
         run: |
           BUILD_TYPE=${{ github.event.inputs.build_type || 'release' }}
           GRADLE_OPTS=""
           if [ -f "app/keystore/release.keystore" ]; then
-            echo "==> 浣跨敤绛惧悕閰嶇疆"
+            echo "==> 使用签名配置"
             GRADLE_OPTS="-PWFB_KEYSTORE_FILE=app/keystore/release.keystore \
               -PWFB_KEYSTORE_PASSWORD=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} \
               -PWFB_KEY_ALIAS=${{ secrets.ANDROID_KEY_ALIAS }} \
               -PWFB_KEY_PASSWORD=${{ secrets.ANDROID_KEY_PASSWORD }}"
           else
-            echo "==> 鏈厤缃鍚嶏紝鐢熸垚鏈鍚?APK"
+            echo "==> 未配置签名,生成未签名 APK"
           fi
           ./gradlew assemble${BUILD_TYPE^} $GRADLE_OPTS --stacktrace
 
-      - name: 鏀堕泦浜х墿
+      - name: 收集产物
         run: |
           mkdir -p dist
           BUILD_TYPE=${{ github.event.inputs.build_type || 'release' }}
           find app/build/outputs/apk/$BUILD_TYPE -name "*.apk" -exec cp -v {} dist/ \;
-          # 鏀堕泦 mapping 鏂囦欢锛堢敤浜?Crash 鍙嶆贩娣嗭級
+          # 收集 mapping 文件(用于 Crash 反混淆)
           if [ -f "app/build/outputs/mapping/release/mapping.txt" ]; then
             cp app/build/outputs/mapping/release/mapping.txt dist/
           fi
-          echo "==> 浜х墿鍒楄〃锛?
+          echo "==> 产物列表:"
           ls -lh dist/
 
-      - name: 涓婁紶 APK 鍒跺搧
+      - name: 上传 APK 制品
         uses: actions/upload-artifact@v4
         with:
           name: app-${{ github.event.inputs.build_type || 'release' }}-apk
@@ -174,7 +179,7 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: 闄勫姞鍒?GitHub Release
+      - name: 附加到 GitHub Release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
@@ -183,33 +188,34 @@ jobs:
           body: |
             ## WiFi Battle Platform v${{ steps.version.outputs.version_name }}
 
-            - 鏋勫缓 SHA: `${{ steps.version.outputs.short_sha }}`
-            - 鏋勫缓鏃堕棿: ${{ github.event.repository.updated_at }}
-            - 鎻愪氦: ${{ github.event.head_commit.message }}
+            - 构建 SHA: `${{ steps.version.outputs.short_sha }}`
+            - 构建时间: ${{ github.event.repository.updated_at }}
+            - 提交: ${{ github.event.head_commit.message }}
 
-            ### 涓嬭浇
-            涓嬫柟闄勪欢涓烘瀯寤轰骇鐗┿€?          files: |
+            ### 下载
+            下方附件为构建产物。
+          files: |
             dist/*.apk
             dist/mapping.txt
           draft: false
           prerelease: false
           generate_release_notes: true
 
-  # ========== 4. 涓婁紶鍒?CDN/S3锛堝彲閫夛級 ==========
+  # ========== 4. 上传到 CDN/S3(可选) ==========
   deploy-cdn:
-    name: 涓婁紶鍒?CDN
-    runs-on: ubuntu-latest
+    name: 上传到 CDN
+    runs-on: ubuntu-22.04
     needs: [build]
     if: github.event.inputs.upload_to_cdn == 'true' || startsWith(github.ref, 'refs/tags/v')
     timeout-minutes: 15
     steps:
-      - name: 涓嬭浇 APK 鍒跺搧
+      - name: 下载 APK 制品
         uses: actions/download-artifact@v4
         with:
           name: app-${{ github.event.inputs.build_type || 'release' }}-apk
           path: dist/
 
-      - name: 閰嶇疆 AWS 鍑瘉
+      - name: 配置 AWS 凭证
         if: env.AWS_ACCESS_KEY_ID != ''
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -217,7 +223,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: 涓婁紶鍒?S3
+      - name: 上传到 S3
         if: env.AWS_ACCESS_KEY_ID != ''
         env:
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
@@ -227,10 +233,11 @@ jobs:
             aws s3 cp "$apk" "s3://${S3_BUCKET}/wifibattle/v${VERSION}/$(basename $apk)" \
               --acl public-read \
               --cache-control "max-age=3600"
-            echo "==> 涓婁紶鎴愬姛: https://${S3_BUCKET}.s3.amazonaws.com/wifibattle/v${VERSION}/$(basename $apk)"
+            echo "==> 上传成功: https://${S3_BUCKET}.s3.amazonaws.com/wifibattle/v${VERSION}/$(basename $apk)"
           done
 
-      - name: 鍒涘缓鏈€鏂扮増鏈摼鎺?        if: env.AWS_ACCESS_KEY_ID != ''
+      - name: 创建最新版本链接
+        if: env.AWS_ACCESS_KEY_ID != ''
         env:
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
           VERSION: ${{ steps.version.outputs.version_name }}
@@ -240,23 +247,23 @@ jobs:
             aws s3 cp "$apk" "s3://${S3_BUCKET}/wifibattle/latest/${name}" --acl public-read
           done
 
-  # ========== 5. 閮ㄧ讲鍒?Play 鍟嗗簵锛堝彲閫夛級 ==========
+  # ========== 5. 部署到 Play 商店(可选) ==========
   deploy-play:
-    name: 閮ㄧ讲鍒?Google Play
-    runs-on: ubuntu-latest
+    name: 部署到 Google Play
+    runs-on: ubuntu-22.04
     needs: [build]
     if: startsWith(github.ref, 'refs/tags/v')
     env:
       PLAY_STORE_SERVICE_ACCOUNT: ${{ secrets.PLAY_STORE_SERVICE_ACCOUNT }}
     timeout-minutes: 30
     steps:
-      - name: 涓嬭浇 AAB
+      - name: 下载 AAB
         uses: actions/download-artifact@v4
         with:
           name: app-${{ github.event.inputs.build_type || 'release' }}-apk
           path: dist/
 
-      - name: 涓婁紶鍒?Play 鍟嗗簵
+      - name: 上传到 Play 商店
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_SERVICE_ACCOUNT }}
