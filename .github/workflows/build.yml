@@ -52,7 +52,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-          cache: gradle
 
       - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
@@ -85,7 +84,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-          cache: gradle
 
       - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
@@ -120,7 +118,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-          cache: gradle
 
       - name: 赋予 gradlew 执行权限
         run: chmod +x gradlew
