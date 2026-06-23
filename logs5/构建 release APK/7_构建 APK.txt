@@ -1,0 +1,80 @@
+﻿2026-06-23T17:24:43.9419345Z ##[group]Run BUILD_TYPE=release
+2026-06-23T17:24:43.9419602Z [36;1mBUILD_TYPE=release[0m
+2026-06-23T17:24:43.9419824Z [36;1mGRADLE_OPTS=""[0m
+2026-06-23T17:24:43.9420068Z [36;1mif [ -f "app/keystore/release.keystore" ]; then[0m
+2026-06-23T17:24:43.9420343Z [36;1m  echo "==> 使用签名配置"[0m
+2026-06-23T17:24:43.9420620Z [36;1m  GRADLE_OPTS="-PWFB_KEYSTORE_FILE=app/keystore/release.keystore \[0m
+2026-06-23T17:24:43.9420940Z [36;1m    -PWFB_KEYSTORE_PASSWORD= \[0m
+2026-06-23T17:24:43.9421169Z [36;1m    -PWFB_KEY_ALIAS= \[0m
+2026-06-23T17:24:43.9421378Z [36;1m    -PWFB_KEY_PASSWORD="[0m
+2026-06-23T17:24:43.9421578Z [36;1melse[0m
+2026-06-23T17:24:43.9421751Z [36;1m  echo "==> 未配置签名，生成未签名 APK"[0m
+2026-06-23T17:24:43.9421997Z [36;1mfi[0m
+2026-06-23T17:24:43.9422227Z [36;1m./gradlew assemble${BUILD_TYPE^} $GRADLE_OPTS --stacktrace[0m
+2026-06-23T17:24:43.9479883Z shell: /usr/bin/bash -e {0}
+2026-06-23T17:24:43.9480110Z env:
+2026-06-23T17:24:43.9480319Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:24:43.9480658Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:24:43.9480947Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:24:43.9481336Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:24:43.9481636Z ##[endgroup]
+2026-06-23T17:24:43.9561830Z ==> 未配置签名，生成未签名 APK
+2026-06-23T17:24:44.4091307Z 
+2026-06-23T17:24:44.4092341Z Welcome to Gradle 8.10.2!
+2026-06-23T17:24:44.4092650Z 
+2026-06-23T17:24:44.4094175Z Here are the highlights of this release:
+2026-06-23T17:24:44.4099175Z  - Support for Java 23
+2026-06-23T17:24:44.4099671Z  - Faster configuration cache
+2026-06-23T17:24:44.4100260Z  - Better configuration cache reports
+2026-06-23T17:24:44.4100578Z 
+2026-06-23T17:24:44.4102402Z For more details see https://docs.gradle.org/8.10.2/release-notes.html
+2026-06-23T17:24:44.4102821Z 
+2026-06-23T17:24:44.5094690Z 
+2026-06-23T17:24:44.5095539Z FAILURE: Build failed with an exception.
+2026-06-23T17:24:44.5096428Z 
+2026-06-23T17:24:44.5096640Z * What went wrong:
+2026-06-23T17:24:44.5097174Z The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:24:44.5097981Z 
+2026-06-23T17:24:44.5098085Z * Try:
+2026-06-23T17:24:44.5098423Z > Run with --info or --debug option to get more log output.
+2026-06-23T17:24:44.5100859Z > Run with --scan to get full insights.
+2026-06-23T17:24:44.5102471Z > Get more help at https://help.gradle.org.
+2026-06-23T17:24:44.5102974Z 
+2026-06-23T17:24:44.5103224Z * Exception is:
+2026-06-23T17:24:44.5115219Z java.lang.IllegalArgumentException: The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:24:44.5116694Z 	at org.gradle.internal.buildprocess.execution.StartParamsValidatingActionExecutor.validateIsFileAndExists(StartParamsValidatingActionExecutor.java:70)
+2026-06-23T17:24:44.5118521Z 	at org.gradle.internal.buildprocess.execution.StartParamsValidatingActionExecutor.execute(StartParamsValidatingActionExecutor.java:58)
+2026-06-23T17:24:44.5120100Z 	at org.gradle.internal.buildprocess.execution.StartParamsValidatingActionExecutor.execute(StartParamsValidatingActionExecutor.java:32)
+2026-06-23T17:24:44.5121837Z 	at org.gradle.internal.buildprocess.execution.SessionFailureReportingActionExecutor.execute(SessionFailureReportingActionExecutor.java:51)
+2026-06-23T17:24:44.5123680Z 	at org.gradle.internal.buildprocess.execution.SessionFailureReportingActionExecutor.execute(SessionFailureReportingActionExecutor.java:39)
+2026-06-23T17:24:44.5125511Z 	at org.gradle.internal.buildprocess.execution.SetupLoggingActionExecutor.execute(SetupLoggingActionExecutor.java:47)
+2026-06-23T17:24:44.5126931Z 	at org.gradle.internal.buildprocess.execution.SetupLoggingActionExecutor.execute(SetupLoggingActionExecutor.java:31)
+2026-06-23T17:24:44.5128134Z 	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:70)
+2026-06-23T17:24:44.5129165Z 	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+2026-06-23T17:24:44.5130688Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:24:44.5131645Z 	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:39)
+2026-06-23T17:24:44.5132614Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:24:44.5133637Z 	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:29)
+2026-06-23T17:24:44.5134810Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:24:44.5135921Z 	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:35)
+2026-06-23T17:24:44.5137058Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:24:44.5138057Z 	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.lambda$execute$0(ForwardClientInput.java:40)
+2026-06-23T17:24:44.5139073Z 	at org.gradle.internal.daemon.clientinput.ClientInputForwarder.forwardInput(ClientInputForwarder.java:80)
+2026-06-23T17:24:44.5140060Z 	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:37)
+2026-06-23T17:24:44.5141027Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:24:44.5141974Z 	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:64)
+2026-06-23T17:24:44.5142910Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:24:44.5143793Z 	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:63)
+2026-06-23T17:24:44.5144785Z 	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+2026-06-23T17:24:44.5145723Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:24:44.5146341Z 	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:84)
+2026-06-23T17:24:44.5147082Z 	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+2026-06-23T17:24:44.5147649Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:24:44.5148262Z 	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:52)
+2026-06-23T17:24:44.5148879Z 	at org.gradle.launcher.daemon.server.DaemonStateCoordinator.lambda$runCommand$0(DaemonStateCoordinator.java:321)
+2026-06-23T17:24:44.5149490Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+2026-06-23T17:24:44.5150062Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+2026-06-23T17:24:44.5150374Z 
+2026-06-23T17:24:44.5150379Z 
+2026-06-23T17:24:44.5150458Z BUILD FAILED in 493ms
+2026-06-23T17:24:44.5220914Z ##[error]Process completed with exit code 1.

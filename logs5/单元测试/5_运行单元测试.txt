@@ -1,0 +1,37 @@
+﻿2026-06-23T17:24:34.7029009Z ##[group]Run ./gradlew testDebugUnitTest --no-daemon
+2026-06-23T17:24:34.7029728Z [36;1m./gradlew testDebugUnitTest --no-daemon[0m
+2026-06-23T17:24:34.7095032Z shell: /usr/bin/bash -e {0}
+2026-06-23T17:24:34.7095497Z env:
+2026-06-23T17:24:34.7095956Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:24:34.7096514Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:24:34.7097113Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:24:34.7097859Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:24:34.7098462Z ##[endgroup]
+2026-06-23T17:24:35.7139260Z Downloading https://services.gradle.org/distributions/gradle-8.10.2-bin.zip
+2026-06-23T17:24:37.8735172Z .............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+2026-06-23T17:24:39.1961447Z 
+2026-06-23T17:24:39.1962167Z Welcome to Gradle 8.10.2!
+2026-06-23T17:24:39.1962756Z 
+2026-06-23T17:24:39.1963689Z Here are the highlights of this release:
+2026-06-23T17:24:39.1964347Z  - Support for Java 23
+2026-06-23T17:24:39.1965974Z  - Faster configuration cache
+2026-06-23T17:24:39.1968872Z  - Better configuration cache reports
+2026-06-23T17:24:39.1969461Z 
+2026-06-23T17:24:39.1971367Z For more details see https://docs.gradle.org/8.10.2/release-notes.html
+2026-06-23T17:24:39.1972023Z 
+2026-06-23T17:24:39.3954417Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.10.2/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+2026-06-23T17:24:40.6985716Z 
+2026-06-23T17:24:40.6986383Z Daemon will be stopped at the end of the build 
+2026-06-23T17:24:40.7448750Z FAILURE: Build failed with an exception.
+2026-06-23T17:24:40.7449886Z 
+2026-06-23T17:24:40.7450380Z * What went wrong:
+2026-06-23T17:24:40.7451431Z The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:24:40.7452527Z 
+2026-06-23T17:24:40.7452897Z * Try:
+2026-06-23T17:24:40.7453652Z > Run with --stacktrace option to get the stack trace.
+2026-06-23T17:24:40.7455073Z > Run with --info or --debug option to get more log output.
+2026-06-23T17:24:40.7456027Z > Run with --scan to get full insights.
+2026-06-23T17:24:40.7456907Z > Get more help at https://help.gradle.org.
+2026-06-23T17:24:40.7457582Z 
+2026-06-23T17:24:40.7457922Z BUILD FAILED in 5s
+2026-06-23T17:24:40.8274519Z ##[error]Process completed with exit code 1.

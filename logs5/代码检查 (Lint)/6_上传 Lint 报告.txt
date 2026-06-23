@@ -1,0 +1,22 @@
+﻿2026-06-23T17:24:44.4441022Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-23T17:24:44.4442353Z ##[group]Run actions/upload-artifact@v4
+2026-06-23T17:24:44.4442628Z with:
+2026-06-23T17:24:44.4442814Z   name: lint-report
+2026-06-23T17:24:44.4443174Z   path: app/build/reports/lint-results-*.html
+app/build/reports/lint-results-*.xml
+
+2026-06-23T17:24:44.4443599Z   if-no-files-found: ignore
+2026-06-23T17:24:44.4443831Z   retention-days: 14
+2026-06-23T17:24:44.4444045Z   compression-level: 6
+2026-06-23T17:24:44.4444266Z   overwrite: false
+2026-06-23T17:24:44.4444473Z   include-hidden-files: false
+2026-06-23T17:24:44.4444701Z env:
+2026-06-23T17:24:44.4444941Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:24:44.4445287Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:24:44.4445668Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:24:44.4446159Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:24:44.4446535Z ##[endgroup]
+2026-06-23T17:24:44.6283459Z (node:2208) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-06-23T17:24:44.6284820Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-06-23T17:24:44.6302567Z No files were found with the provided path: app/build/reports/lint-results-*.html
+2026-06-23T17:24:44.6303506Z app/build/reports/lint-results-*.xml. No artifacts will be uploaded.
