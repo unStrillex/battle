@@ -1,0 +1,72 @@
+﻿2026-06-23T17:42:22.3522454Z ##[group]Run ./gradlew lintDebug --stacktrace
+2026-06-23T17:42:22.3523879Z [36;1m./gradlew lintDebug --stacktrace[0m
+2026-06-23T17:42:22.3598643Z shell: /usr/bin/bash -e {0}
+2026-06-23T17:42:22.3599893Z env:
+2026-06-23T17:42:22.3600953Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:42:22.3602373Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:42:22.3603845Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:22.3605880Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:22.3607489Z ##[endgroup]
+2026-06-23T17:42:23.8703390Z Downloading https://services.gradle.org/distributions/gradle-8.6-bin.zip
+2026-06-23T17:42:26.5281278Z ............10%.............20%............30%.............40%.............50%............60%.............70%.............80%............90%.............100%
+2026-06-23T17:42:27.9301352Z 
+2026-06-23T17:42:27.9311037Z Welcome to Gradle 8.6!
+2026-06-23T17:42:27.9311656Z 
+2026-06-23T17:42:27.9312064Z Here are the highlights of this release:
+2026-06-23T17:42:27.9313450Z  - Configurable encryption key for configuration cache
+2026-06-23T17:42:27.9314081Z  - Build init improvements
+2026-06-23T17:42:27.9314567Z  - Build authoring improvements
+2026-06-23T17:42:27.9314947Z 
+2026-06-23T17:42:27.9315336Z For more details see https://docs.gradle.org/8.6/release-notes.html
+2026-06-23T17:42:27.9315864Z 
+2026-06-23T17:42:28.2284061Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-06-23T17:42:29.6283426Z 
+2026-06-23T17:42:29.6284727Z FAILURE: Build failed with an exception.
+2026-06-23T17:42:29.6285896Z 
+2026-06-23T17:42:29.6286382Z * What went wrong:
+2026-06-23T17:42:29.6287358Z The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:42:29.6288381Z 
+2026-06-23T17:42:29.6288742Z * Try:
+2026-06-23T17:42:29.6289720Z > Run with --info or --debug option to get more log output.
+2026-06-23T17:42:29.6290734Z > Run with --scan to get full insights.
+2026-06-23T17:42:29.6291559Z > Get more help at https://help.gradle.org.
+2026-06-23T17:42:29.6292172Z 
+2026-06-23T17:42:29.6292647Z * Exception is:
+2026-06-23T17:42:29.6293753Z java.lang.IllegalArgumentException: The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:42:29.6297724Z 	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.validateIsFileAndExists(StartParamsValidatingActionExecuter.java:70)
+2026-06-23T17:42:29.6315607Z 	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:58)
+2026-06-23T17:42:29.6317424Z 	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:32)
+2026-06-23T17:42:29.6319966Z 	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:51)
+2026-06-23T17:42:29.6322273Z 	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:39)
+2026-06-23T17:42:29.6324312Z 	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:47)
+2026-06-23T17:42:29.6326084Z 	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:31)
+2026-06-23T17:42:29.6327415Z 	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:65)
+2026-06-23T17:42:29.6328803Z 	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+2026-06-23T17:42:29.6330578Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:29.6332824Z 	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:39)
+2026-06-23T17:42:29.6334161Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:29.6336160Z 	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:29)
+2026-06-23T17:42:29.6337509Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:29.6338968Z 	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:35)
+2026-06-23T17:42:29.6340821Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:29.6342154Z 	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:78)
+2026-06-23T17:42:29.6343354Z 	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:75)
+2026-06-23T17:42:29.6344267Z 	at org.gradle.util.internal.Swapper.swap(Swapper.java:38)
+2026-06-23T17:42:29.6345155Z 	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:75)
+2026-06-23T17:42:29.6346065Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:29.6347105Z 	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:64)
+2026-06-23T17:42:29.6347826Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:29.6348708Z 	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:63)
+2026-06-23T17:42:29.6349989Z 	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+2026-06-23T17:42:29.6351254Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:29.6352650Z 	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:84)
+2026-06-23T17:42:29.6353945Z 	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+2026-06-23T17:42:29.6355194Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:29.6356583Z 	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:52)
+2026-06-23T17:42:29.6357920Z 	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:297)
+2026-06-23T17:42:29.6359257Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+2026-06-23T17:42:29.6360941Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+2026-06-23T17:42:29.6361643Z 
+2026-06-23T17:42:29.6361668Z 
+2026-06-23T17:42:29.6361804Z BUILD FAILED in 6s
+2026-06-23T17:42:29.9703670Z ##[error]Process completed with exit code 1.

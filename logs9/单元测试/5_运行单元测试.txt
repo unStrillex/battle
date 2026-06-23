@@ -1,0 +1,36 @@
+﻿2026-06-23T17:42:22.9210634Z ##[group]Run ./gradlew testDebugUnitTest
+2026-06-23T17:42:22.9211794Z [36;1m./gradlew testDebugUnitTest[0m
+2026-06-23T17:42:22.9277953Z shell: /usr/bin/bash -e {0}
+2026-06-23T17:42:22.9278856Z env:
+2026-06-23T17:42:22.9279774Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:42:22.9281015Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:42:22.9282323Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:22.9284124Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:22.9285712Z ##[endgroup]
+2026-06-23T17:42:24.4808109Z Downloading https://services.gradle.org/distributions/gradle-8.6-bin.zip
+2026-06-23T17:42:27.2545619Z ............10%.............20%............30%.............40%.............50%............60%.............70%.............80%............90%.............100%
+2026-06-23T17:42:28.5501827Z 
+2026-06-23T17:42:28.5510178Z Welcome to Gradle 8.6!
+2026-06-23T17:42:28.5525075Z 
+2026-06-23T17:42:28.5535659Z Here are the highlights of this release:
+2026-06-23T17:42:28.5540472Z  - Configurable encryption key for configuration cache
+2026-06-23T17:42:28.5540948Z  - Build init improvements
+2026-06-23T17:42:28.5541292Z  - Build authoring improvements
+2026-06-23T17:42:28.5541527Z 
+2026-06-23T17:42:28.5541819Z For more details see https://docs.gradle.org/8.6/release-notes.html
+2026-06-23T17:42:28.5542158Z 
+2026-06-23T17:42:28.9484238Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-06-23T17:42:30.4484879Z 
+2026-06-23T17:42:30.4486170Z FAILURE: Build failed with an exception.
+2026-06-23T17:42:30.4496809Z 
+2026-06-23T17:42:30.4497353Z * What went wrong:
+2026-06-23T17:42:30.4498369Z The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:42:30.4499266Z 
+2026-06-23T17:42:30.4499607Z * Try:
+2026-06-23T17:42:30.4500270Z > Run with --stacktrace option to get the stack trace.
+2026-06-23T17:42:30.4501184Z > Run with --info or --debug option to get more log output.
+2026-06-23T17:42:30.4502069Z > Run with --scan to get full insights.
+2026-06-23T17:42:30.4502824Z > Get more help at https://help.gradle.org.
+2026-06-23T17:42:30.4503374Z 
+2026-06-23T17:42:30.4503719Z BUILD FAILED in 6s
+2026-06-23T17:42:30.7994658Z ##[error]Process completed with exit code 1.

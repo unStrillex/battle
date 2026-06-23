@@ -1,0 +1,295 @@
+﻿2026-06-23T17:42:20.5408345Z Current runner version: '2.335.1'
+2026-06-23T17:42:20.5434357Z ##[group]Runner Image Provisioner
+2026-06-23T17:42:20.5435260Z Hosted Compute Agent
+2026-06-23T17:42:20.5435894Z Version: 20260611.554
+2026-06-23T17:42:20.5436677Z Commit: 5e0782fdc9014723d3be820dd114dd31555c2bd1
+2026-06-23T17:42:20.5437427Z Build Date: 2026-06-11T21:40:46Z
+2026-06-23T17:42:20.5438231Z Worker ID: {f9b134e0-33b1-409d-9422-87c4441450f5}
+2026-06-23T17:42:20.5438975Z Azure Region: eastus
+2026-06-23T17:42:20.5439581Z ##[endgroup]
+2026-06-23T17:42:20.5441858Z ##[group]Operating System
+2026-06-23T17:42:20.5442541Z Ubuntu
+2026-06-23T17:42:20.5443082Z 22.04.5
+2026-06-23T17:42:20.5443699Z LTS
+2026-06-23T17:42:20.5444247Z ##[endgroup]
+2026-06-23T17:42:20.5444852Z ##[group]Runner Image
+2026-06-23T17:42:20.5445477Z Image: ubuntu-22.04
+2026-06-23T17:42:20.5446095Z Version: 20260617.186.1
+2026-06-23T17:42:20.5447441Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20260617.186/images/ubuntu/Ubuntu2204-Readme.md
+2026-06-23T17:42:20.5449070Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20260617.186
+2026-06-23T17:42:20.5450526Z ##[endgroup]
+2026-06-23T17:42:20.5451784Z ##[group]GITHUB_TOKEN Permissions
+2026-06-23T17:42:20.5454024Z Contents: write
+2026-06-23T17:42:20.5454688Z Metadata: read
+2026-06-23T17:42:20.5455391Z ##[endgroup]
+2026-06-23T17:42:20.5457651Z Secret source: Actions
+2026-06-23T17:42:20.5458813Z Prepare workflow directory
+2026-06-23T17:42:20.6015631Z Prepare all required actions
+2026-06-23T17:42:20.6056530Z Getting action download info
+2026-06-23T17:42:20.8408169Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-06-23T17:42:20.9670285Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+2026-06-23T17:42:21.1986975Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-06-23T17:42:21.3062606Z Download action repository 'softprops/action-gh-release@v2' (SHA:3bb12739c298aeb8a4eeaf626c5b8d85266b0e65)
+2026-06-23T17:42:21.5144891Z Complete job name: 构建 release APK
+2026-06-23T17:42:21.5839157Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-23T17:42:21.5847761Z ##[group]Run actions/checkout@v4
+2026-06-23T17:42:21.5848505Z with:
+2026-06-23T17:42:21.5848947Z   repository: unStrillex/battle
+2026-06-23T17:42:21.5853373Z   token: ***
+2026-06-23T17:42:21.5853809Z   ssh-strict: true
+2026-06-23T17:42:21.5854235Z   ssh-user: git
+2026-06-23T17:42:21.5854674Z   persist-credentials: true
+2026-06-23T17:42:21.5855172Z   clean: true
+2026-06-23T17:42:21.5855607Z   sparse-checkout-cone-mode: true
+2026-06-23T17:42:21.5856145Z   fetch-depth: 1
+2026-06-23T17:42:21.5856629Z   fetch-tags: false
+2026-06-23T17:42:21.5857151Z   show-progress: true
+2026-06-23T17:42:21.5857627Z   lfs: false
+2026-06-23T17:42:21.5858115Z   submodules: false
+2026-06-23T17:42:21.5858607Z   set-safe-directory: true
+2026-06-23T17:42:21.5859392Z env:
+2026-06-23T17:42:21.5860078Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:42:21.5861007Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:42:21.5861684Z ##[endgroup]
+2026-06-23T17:42:21.6906435Z Syncing repository: unStrillex/battle
+2026-06-23T17:42:21.6908855Z ##[group]Getting Git version info
+2026-06-23T17:42:21.6909835Z Working directory is '/home/runner/work/battle/battle'
+2026-06-23T17:42:21.6911330Z [command]/usr/bin/git version
+2026-06-23T17:42:21.6982404Z git version 2.54.0
+2026-06-23T17:42:21.7037894Z ##[endgroup]
+2026-06-23T17:42:21.7053826Z Temporarily overriding HOME='/home/runner/work/_temp/de209dbb-d98a-4d4a-b6fd-5ab33fdbfd9d' before making global git config changes
+2026-06-23T17:42:21.7056462Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-23T17:42:21.7059522Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/battle/battle
+2026-06-23T17:42:21.7098209Z Deleting the contents of '/home/runner/work/battle/battle'
+2026-06-23T17:42:21.7103401Z ##[group]Initializing the repository
+2026-06-23T17:42:21.7107490Z [command]/usr/bin/git init /home/runner/work/battle/battle
+2026-06-23T17:42:21.7233252Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-06-23T17:42:21.7235450Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-06-23T17:42:21.7237418Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-06-23T17:42:21.7239249Z hint: call:
+2026-06-23T17:42:21.7240474Z hint:
+2026-06-23T17:42:21.7241672Z hint: 	git config --global init.defaultBranch <name>
+2026-06-23T17:42:21.7243019Z hint:
+2026-06-23T17:42:21.7244244Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-06-23T17:42:21.7245802Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-06-23T17:42:21.7247474Z hint:
+2026-06-23T17:42:21.7248367Z hint: 	git branch -m <name>
+2026-06-23T17:42:21.7249329Z hint:
+2026-06-23T17:42:21.7250666Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-06-23T17:42:21.7251806Z Initialized empty Git repository in /home/runner/work/battle/battle/.git/
+2026-06-23T17:42:21.7253770Z [command]/usr/bin/git remote add origin https://github.com/unStrillex/battle
+2026-06-23T17:42:21.7284413Z ##[endgroup]
+2026-06-23T17:42:21.7285993Z ##[group]Disabling automatic garbage collection
+2026-06-23T17:42:21.7287741Z [command]/usr/bin/git config --local gc.auto 0
+2026-06-23T17:42:21.7322602Z ##[endgroup]
+2026-06-23T17:42:21.7324069Z ##[group]Setting up auth
+2026-06-23T17:42:21.7328742Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-23T17:42:21.7361998Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-23T17:42:21.7716828Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-23T17:42:21.7749157Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-23T17:42:21.7994038Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-23T17:42:21.8027903Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-23T17:42:21.8276752Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-06-23T17:42:21.8316949Z ##[endgroup]
+2026-06-23T17:42:21.8318792Z ##[group]Fetching the repository
+2026-06-23T17:42:21.8328437Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2e7cd9dbf6cd40b562941f31407f45c184f259f2:refs/remotes/origin/main
+2026-06-23T17:42:22.0611000Z From https://github.com/unStrillex/battle
+2026-06-23T17:42:22.0613851Z  * [new ref]         2e7cd9dbf6cd40b562941f31407f45c184f259f2 -> origin/main
+2026-06-23T17:42:22.0637061Z ##[endgroup]
+2026-06-23T17:42:22.0639402Z ##[group]Determining the checkout info
+2026-06-23T17:42:22.0642321Z ##[endgroup]
+2026-06-23T17:42:22.0646408Z [command]/usr/bin/git sparse-checkout disable
+2026-06-23T17:42:22.0707709Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-06-23T17:42:22.0738007Z ##[group]Checking out the ref
+2026-06-23T17:42:22.0743818Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-06-23T17:42:22.0851648Z Switched to a new branch 'main'
+2026-06-23T17:42:22.0853713Z branch 'main' set up to track 'origin/main'.
+2026-06-23T17:42:22.0862833Z ##[endgroup]
+2026-06-23T17:42:22.0907634Z [command]/usr/bin/git log -1 --format=%H
+2026-06-23T17:42:22.0931606Z 2e7cd9dbf6cd40b562941f31407f45c184f259f2
+2026-06-23T17:42:22.1419374Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-23T17:42:22.1425353Z ##[group]Run actions/setup-java@v4
+2026-06-23T17:42:22.1426392Z with:
+2026-06-23T17:42:22.1427161Z   distribution: temurin
+2026-06-23T17:42:22.1428070Z   java-version: 17
+2026-06-23T17:42:22.1428916Z   java-package: jdk
+2026-06-23T17:42:22.1429762Z   check-latest: false
+2026-06-23T17:42:22.1430798Z   server-id: github
+2026-06-23T17:42:22.1431684Z   server-username: GITHUB_ACTOR
+2026-06-23T17:42:22.1432734Z   server-password: GITHUB_TOKEN
+2026-06-23T17:42:22.1433813Z   overwrite-settings: true
+2026-06-23T17:42:22.1434784Z   job-status: success
+2026-06-23T17:42:22.1445543Z   token: ***
+2026-06-23T17:42:22.1446315Z env:
+2026-06-23T17:42:22.1447355Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:42:22.1448764Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:42:22.1449776Z ##[endgroup]
+2026-06-23T17:42:22.3252584Z ##[group]Installed distributions
+2026-06-23T17:42:22.3319261Z Resolved Java 17.0.19+10 from tool-cache
+2026-06-23T17:42:22.3320320Z Setting Java 17.0.19+10 as the default
+2026-06-23T17:42:22.3330599Z (node:2105) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-06-23T17:42:22.3331626Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-06-23T17:42:22.3335684Z Creating toolchains.xml for JDK version 17 from temurin
+2026-06-23T17:42:22.3414402Z Writing to /home/runner/.m2/toolchains.xml
+2026-06-23T17:42:22.3421053Z 
+2026-06-23T17:42:22.3421633Z Java configuration:
+2026-06-23T17:42:22.3422094Z   Distribution: temurin
+2026-06-23T17:42:22.3422620Z   Version: 17.0.19+10
+2026-06-23T17:42:22.3423208Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:22.3423665Z 
+2026-06-23T17:42:22.3424199Z ##[endgroup]
+2026-06-23T17:42:22.3439117Z Creating settings.xml with server-id: github
+2026-06-23T17:42:22.3439685Z Writing to /home/runner/.m2/settings.xml
+2026-06-23T17:42:22.3560235Z ##[group]Run chmod +x gradlew
+2026-06-23T17:42:22.3560845Z [36;1mchmod +x gradlew[0m
+2026-06-23T17:42:22.4107865Z shell: /usr/bin/bash -e {0}
+2026-06-23T17:42:22.4108470Z env:
+2026-06-23T17:42:22.4109034Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:42:22.4109746Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:42:22.4110764Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:22.4111716Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:22.4112520Z ##[endgroup]
+2026-06-23T17:42:22.4302856Z ##[group]Run VERSION_NAME=$(./gradlew -q :app:properties | grep "^versionName:" | awk '{print $2}' | tr -d '\r')
+2026-06-23T17:42:22.4303992Z [36;1mVERSION_NAME=$(./gradlew -q :app:properties | grep "^versionName:" | awk '{print $2}' | tr -d '\r')[0m
+2026-06-23T17:42:22.4304973Z [36;1mVERSION_CODE=$(./gradlew -q :app:properties | grep "^versionCode:" | awk '{print $2}' | tr -d '\r')[0m
+2026-06-23T17:42:22.4305841Z [36;1mecho "version_name=$VERSION_NAME" >> $GITHUB_OUTPUT[0m
+2026-06-23T17:42:22.4306461Z [36;1mecho "version_code=$VERSION_CODE" >> $GITHUB_OUTPUT[0m
+2026-06-23T17:42:22.4307005Z [36;1mecho "短 SHA: ${GITHUB_SHA::7}"[0m
+2026-06-23T17:42:22.4307548Z [36;1mecho "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT[0m
+2026-06-23T17:42:22.4375514Z shell: /usr/bin/bash -e {0}
+2026-06-23T17:42:22.4375969Z env:
+2026-06-23T17:42:22.4376418Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:42:22.4376971Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:42:22.4377804Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:22.4378545Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:22.4379147Z ##[endgroup]
+2026-06-23T17:42:31.1933375Z 
+2026-06-23T17:42:31.2501160Z FAILURE: Build failed with an exception.
+2026-06-23T17:42:31.2503426Z 
+2026-06-23T17:42:31.2510767Z * What went wrong:
+2026-06-23T17:42:31.2511660Z The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:42:31.2512221Z 
+2026-06-23T17:42:31.2512468Z * Try:
+2026-06-23T17:42:31.2512937Z > Run with --stacktrace option to get the stack trace.
+2026-06-23T17:42:31.2513657Z > Run with --info or --debug option to get more log output.
+2026-06-23T17:42:31.2514390Z > Run with --scan to get full insights.
+2026-06-23T17:42:31.2514946Z > Get more help at https://help.gradle.org.
+2026-06-23T17:42:31.2515353Z 
+2026-06-23T17:42:31.2516734Z BUILD FAILED in 6s
+2026-06-23T17:42:32.1925726Z 
+2026-06-23T17:42:32.2522825Z FAILURE: Build failed with an exception.
+2026-06-23T17:42:32.2523396Z 
+2026-06-23T17:42:32.2523830Z * What went wrong:
+2026-06-23T17:42:32.2553040Z The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:42:32.2554140Z 
+2026-06-23T17:42:32.2554257Z * Try:
+2026-06-23T17:42:32.2554989Z > Run with --stacktrace option to get the stack trace.
+2026-06-23T17:42:32.2560631Z > Run with --info or --debug option to get more log output.
+2026-06-23T17:42:32.2561361Z > Run with --scan to get full insights.
+2026-06-23T17:42:32.2562138Z > Get more help at https://help.gradle.org.
+2026-06-23T17:42:32.2562621Z 
+2026-06-23T17:42:32.2565322Z BUILD FAILED in 564ms
+2026-06-23T17:42:32.2667804Z 短 SHA: 2e7cd9d
+2026-06-23T17:42:32.2728815Z ##[group]Run BUILD_TYPE=release
+2026-06-23T17:42:32.2729147Z [36;1mBUILD_TYPE=release[0m
+2026-06-23T17:42:32.2729419Z [36;1mGRADLE_OPTS=""[0m
+2026-06-23T17:42:32.2729728Z [36;1mif [ -f "app/keystore/release.keystore" ]; then[0m
+2026-06-23T17:42:32.2730355Z [36;1m  echo "==> 使用签名配置"[0m
+2026-06-23T17:42:32.2730716Z [36;1m  GRADLE_OPTS="-PWFB_KEYSTORE_FILE=app/keystore/release.keystore \[0m
+2026-06-23T17:42:32.2731130Z [36;1m    -PWFB_KEYSTORE_PASSWORD= \[0m
+2026-06-23T17:42:32.2731427Z [36;1m    -PWFB_KEY_ALIAS= \[0m
+2026-06-23T17:42:32.2731688Z [36;1m    -PWFB_KEY_PASSWORD="[0m
+2026-06-23T17:42:32.2731935Z [36;1melse[0m
+2026-06-23T17:42:32.2732137Z [36;1m  echo "==> 未配置签名,生成未签名 APK"[0m
+2026-06-23T17:42:32.2732402Z [36;1mfi[0m
+2026-06-23T17:42:32.2732686Z [36;1m./gradlew assemble${BUILD_TYPE^} $GRADLE_OPTS --stacktrace[0m
+2026-06-23T17:42:32.2803794Z shell: /usr/bin/bash -e {0}
+2026-06-23T17:42:32.2804061Z env:
+2026-06-23T17:42:32.2804429Z   GRADLE_USER_HOME: /home/runner/work/battle/battle/.gradle
+2026-06-23T17:42:32.2804826Z   ANDROID_HOME: /opt/android-sdk
+2026-06-23T17:42:32.2805197Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:32.2805744Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-23T17:42:32.2806135Z ##[endgroup]
+2026-06-23T17:42:32.2904515Z ==> 未配置签名,生成未签名 APK
+2026-06-23T17:42:32.8231004Z 
+2026-06-23T17:42:32.8262612Z Welcome to Gradle 8.6!
+2026-06-23T17:42:32.8270489Z 
+2026-06-23T17:42:32.8270965Z Here are the highlights of this release:
+2026-06-23T17:42:32.8272081Z  - Configurable encryption key for configuration cache
+2026-06-23T17:42:32.8272601Z  - Build init improvements
+2026-06-23T17:42:32.8272990Z  - Build authoring improvements
+2026-06-23T17:42:32.8273250Z 
+2026-06-23T17:42:32.8273572Z For more details see https://docs.gradle.org/8.6/release-notes.html
+2026-06-23T17:42:32.8274080Z 
+2026-06-23T17:42:32.9953827Z 
+2026-06-23T17:42:32.9955229Z FAILURE: Build failed with an exception.
+2026-06-23T17:42:32.9955840Z 
+2026-06-23T17:42:32.9956201Z * What went wrong:
+2026-06-23T17:42:32.9958578Z The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:42:32.9960147Z 
+2026-06-23T17:42:32.9960478Z * Try:
+2026-06-23T17:42:32.9961242Z > Run with --info or --debug option to get more log output.
+2026-06-23T17:42:32.9962760Z > Run with --scan to get full insights.
+2026-06-23T17:42:32.9965030Z > Get more help at https://help.gradle.org.
+2026-06-23T17:42:32.9965599Z 
+2026-06-23T17:42:32.9965868Z * Exception is:
+2026-06-23T17:42:32.9967997Z java.lang.IllegalArgumentException: The specified settings file '/home/runner/work/battle/battle/lasspath' does not exist.
+2026-06-23T17:42:32.9970549Z 	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.validateIsFileAndExists(StartParamsValidatingActionExecuter.java:70)
+2026-06-23T17:42:32.9972815Z 	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:58)
+2026-06-23T17:42:32.9974866Z 	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:32)
+2026-06-23T17:42:32.9977500Z 	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:51)
+2026-06-23T17:42:32.9979736Z 	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:39)
+2026-06-23T17:42:32.9982051Z 	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:47)
+2026-06-23T17:42:33.0000125Z 	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:31)
+2026-06-23T17:42:33.0001333Z 	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:65)
+2026-06-23T17:42:33.0002342Z 	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+2026-06-23T17:42:33.0003629Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:33.0005126Z 	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:39)
+2026-06-23T17:42:33.0006092Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:33.0006906Z 	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:29)
+2026-06-23T17:42:33.0007859Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:33.0009144Z 	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:35)
+2026-06-23T17:42:33.0010646Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:33.0012077Z 	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:78)
+2026-06-23T17:42:33.0012815Z 	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:75)
+2026-06-23T17:42:33.0013383Z 	at org.gradle.util.internal.Swapper.swap(Swapper.java:38)
+2026-06-23T17:42:33.0013935Z 	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:75)
+2026-06-23T17:42:33.0014683Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:33.0015427Z 	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:64)
+2026-06-23T17:42:33.0016187Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:33.0016879Z 	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:63)
+2026-06-23T17:42:33.0017521Z 	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+2026-06-23T17:42:33.0018273Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:33.0019112Z 	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:84)
+2026-06-23T17:42:33.0020382Z 	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+2026-06-23T17:42:33.0021141Z 	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+2026-06-23T17:42:33.0021968Z 	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:52)
+2026-06-23T17:42:33.0022761Z 	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:297)
+2026-06-23T17:42:33.0023512Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+2026-06-23T17:42:33.0024245Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+2026-06-23T17:42:33.0024656Z 
+2026-06-23T17:42:33.0024662Z 
+2026-06-23T17:42:33.0024747Z BUILD FAILED in 615ms
+2026-06-23T17:42:33.0097095Z ##[error]Process completed with exit code 1.
+2026-06-23T17:42:33.0274253Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-23T17:42:33.0275509Z Post job cleanup.
+2026-06-23T17:42:33.1679576Z (node:2271) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-06-23T17:42:33.1680875Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-06-23T17:42:33.1890817Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-23T17:42:33.1892118Z Post job cleanup.
+2026-06-23T17:42:33.2861282Z [command]/usr/bin/git version
+2026-06-23T17:42:33.2906349Z git version 2.54.0
+2026-06-23T17:42:33.2948162Z Temporarily overriding HOME='/home/runner/work/_temp/46e7c15c-3e6d-4364-85c2-ade0aa14a572' before making global git config changes
+2026-06-23T17:42:33.2949798Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-23T17:42:33.2955142Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/battle/battle
+2026-06-23T17:42:33.2998561Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-23T17:42:33.3038749Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-23T17:42:33.3304933Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-23T17:42:33.3332475Z http.https://github.com/.extraheader
+2026-06-23T17:42:33.3344634Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-06-23T17:42:33.3379125Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-23T17:42:33.3630881Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-23T17:42:33.3666937Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-23T17:42:33.4055420Z Cleaning up orphan processes
+2026-06-23T17:42:33.4366438Z Terminate orphan process: pid (2161) (java)
+2026-06-23T17:42:33.4377491Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
