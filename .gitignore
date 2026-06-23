@@ -16,3 +16,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# CI debug artifacts
+logs*/
+*.zip
